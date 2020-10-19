@@ -460,49 +460,112 @@ h6 {
 --------------------------------------------------------------*/
 #hero {
   width: 100%;
-  height: 90vh;
-  background: url("../img/logopng3.png") top center;
+  height: 100vh;
+  background: url("../img/logopng2.png") top center;
   background-size: cover;
   position: relative;
-  margin-bottom: -200px;
+}
+
+#hero:before {
+  content: "";
+  background: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 #hero .container {
+  padding-top: 72px;
   position: relative;
+  text-align: center;
 }
 
 #hero h1 {
-  margin: 0;
+  margin: 0 0 10px 0;
   font-size: 48px;
   font-weight: 700;
   line-height: 56px;
-  text-transform: uppercase;
-  color: #2c4964;
+  color: #fff;
 }
 
 #hero h2 {
-  color: #2c4964;
-  margin: 10px 0 0 0;
+  color: #eee;
+  margin-bottom: 40px;
   font-size: 24px;
 }
 
-#hero .btn-get-started {
-  font-family: "Raleway", sans-serif;
-  text-transform: uppercase;
-  font-weight: 500;
-  font-size: 14px;
-  letter-spacing: 1px;
-  display: inline-block;
-  padding: 12px 35px;
-  margin-top: 30px;
-  border-radius: 50px;
-  transition: 0.5s;
-  color: #fff;
-  background: #b80303;
+#hero .play-btn {
+  width: 94px;
+  height: 94px;
+  margin: 0 auto;
+  background: radial-gradient(#b80303 50%, rgba(0, 153, 97, 0.4) 52%);
+  border-radius: 50%;
+  display: block;
+  overflow: hidden;
+  position: relative;
 }
 
-#hero .btn-get-started:hover {
-  background: #3291e6;
+#hero .play-btn::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-40%) translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 15px solid #fff;
+  z-index: 100;
+  transition: all 400ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+#hero .play-btn::before {
+  content: '';
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+  -webkit-animation: pulsate-btn 3s;
+  animation: pulsate-btn 3s;
+  -webkit-animation-direction: forwards;
+  animation-direction: forwards;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: steps;
+  animation-timing-function: steps;
+  opacity: 1;
+  border-radius: 50%;
+  border: 5px solid rgba(0, 153, 97, 0.7);
+  top: -15%;
+  left: -15%;
+  background: rgba(198, 16, 0, 0);
+}
+
+#hero .play-btn:hover::after {
+  border-left: 15px solid #b80303;
+  transform: scale(20);
+}
+
+#hero .play-btn:hover::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-40%) translateY(-50%);
+  width: 0;
+  height: 0;
+  border: none;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 15px solid #fff;
+  z-index: 200;
+  -webkit-animation: none;
+  animation: none;
+  border-radius: 0;
 }
 
 @media (min-width: 1024px) {
@@ -511,18 +574,10 @@ h6 {
   }
 }
 
-@media (max-width: 992px) {
-  #hero {
-    margin-bottom: 0;
-    height: 100vh;
-  }
-  #hero .container {
-    padding-bottom: 63px;
-  }
+@media (max-width: 768px) {
   #hero h1 {
     font-size: 28px;
     line-height: 36px;
-    visibility: hidden;
   }
   #hero h2 {
     font-size: 18px;
@@ -531,12 +586,27 @@ h6 {
   }
 }
 
-@media (max-height: 500px) {
-  #hero {
-    height: auto;
+@-webkit-keyframes pulsate-btn {
+  0% {
+    transform: scale(0.6, 0.6);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1, 1);
+    opacity: 0;
   }
 }
 
+@keyframes pulsate-btn {
+  0% {
+    transform: scale(0.6, 0.6);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1, 1);
+    opacity: 0;
+  }
+}
 /*--------------------------------------------------------------
 # Sections General
 --------------------------------------------------------------*/
